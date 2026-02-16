@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Creative Technologist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Mobile View -->
+    <div id="mobile-view" class="mobile-view">
+        <div class="mobile-message">
+            <p>This experience is best viewed</p>
+            <p class="mobile-emphasis">on a larger screen.</p>
+            <p class="mobile-hint">Please visit from a desktop or tablet.</p>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader">
+            <div class="petal petal-1"></div>
+            <div class="petal petal-2"></div>
+            <div class="petal petal-3"></div>
+        </div>
+        <p>Loading your garden...</p>
+    </div>
+
+    <!-- WebGL Canvas -->
+    <canvas id="webgl"></canvas>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="logo">
+            <span class="logo-text">Your Name</span>
+        </div>
+        <div class="nav-links">
+            <a href="#" data-section="0">Home</a>
+            <a href="#" data-section="1">About</a>
+            <a href="#" data-section="2">Work</a>
+            <a href="#" data-section="3">Connect</a>
+        </div>
+    </nav>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar"></div>
+
+    <!-- FPS Counter -->
+    <div class="fps-counter"></div>
+
+    <!-- Content Sections -->
+    <div class="sections-container">
+
+        <!-- SECTION 1: HOME -->
+        <section class="section" data-scene="0">
+            <div class="content-left">
+                <p class="label">Welcome to My Garden</p>
+                <h1 class="title">Creative Technologist & Digital Storyteller</h1>
+                <p class="subtitle">Cultivating immersive experiences where technology<br>meets nature, design meets code, and ideas bloom into reality.</p>
+            </div>
+            <div class="scroll-indicator">
+                <span>EXPLORE</span>
+                <div class="line"></div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ABOUT -->
+        <section class="section section-about" data-scene="1">
+            <div class="about-container">
+                <h2 class="section-title-center">About</h2>
+                
+                <div class="about-columns">
+                    <!-- LEFT COLUMN -->
+                    <div class="about-left">
+                        <p class="about-text">I'm a creative technologist who believes the best digital experiences are those that feel alive. With a background spanning design, development, and interactive media, I craft experiences that blend aesthetic beauty with technical precision.</p>
+
+                        <p class="about-text">From building immersive web applications to designing user interfaces that feel intuitive and delightful, I approach every project with curiosity and attention to detail. My work lives at the intersection of art and engineering.</p>
+
+                        <div class="tags">
+                            <span>UI/UX Design</span>
+                            <span>Frontend Development</span>
+                            <span>Three.js</span>
+                            <span>React</span>
+                            <span>WebGL</span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN -->
+                    <div class="about-right">
+                        <p class="about-text">I'm constantly exploring emerging technologies and pushing the boundaries of what's possible in the browser. Whether it's crafting shader effects, building interactive installations, or prototyping new interfaces, I'm driven by the challenge of making complex technology feel effortless.</p>
+
+                        <p class="about-text">Currently seeking opportunities to collaborate on projects that challenge convention and create meaningful digital experiences. Let's build something beautiful together.</p>
+
+                        <div class="tags">
+                            <span>Creative Coding</span>
+                            <span>Motion Design</span>
+                            <span>Prototyping</span>
+                            <span>GSAP</span>
+                            <span>Figma</span>
+                            <span>Blender</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: WORK -->
+        <section class="section section-work" data-scene="2">
+            <div class="work-scattered">
+                <!-- Project 1 -->
+                <a href="#" class="work-box work-box-1">
+                    <h3>Immersive Web Experience</h3>
+                    <p>Interactive 3D portfolio</p>
+                    <span class="work-tag">WebGL • Three.js</span>
+                </a>
+
+                <!-- Project 2 -->
+                <a href="#" class="work-box work-box-2">
+                    <h3>Design System</h3>
+                    <p>Component library & guidelines</p>
+                    <span class="work-tag">React • Figma</span>
+                </a>
+
+                <!-- Project 3 -->
+                <a href="#" class="work-box work-box-3">
+                    <h3>Interactive Installation</h3>
+                    <p>Motion-reactive experience</p>
+                    <span class="work-tag">Creative Coding</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CONNECT -->
+        <section class="section" data-scene="3">
+            <div class="content-left">
+                <h2 class="section-title">Let's Create Together</h2>
+                <p class="lead">Have an idea? Looking to collaborate? I'd love to hear from you.</p>
+                <div class="contact-links">
+                    <a href="mailto:your.email@example.com">Email</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
+                    <a href="#" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
