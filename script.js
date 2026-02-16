@@ -92,7 +92,7 @@ scene.add(ambient);
 
 // Moonlight as key light
 const moonLight = new THREE.DirectionalLight(0xb3d9ff, 1.8);
-moonLight.position.set(40, 50, -30);
+moonLight.position.set(40, 50, 0);
 moonLight.castShadow = true;
 moonLight.shadow.mapSize.width = 2048;
 moonLight.shadow.mapSize.height = 2048;
