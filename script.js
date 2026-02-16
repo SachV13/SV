@@ -461,7 +461,7 @@ function animate() {
     
     // Pulsing moon glow
     if (moonGlow) {
-        moonGlow.material.opacity = 0.8 + Math.sin(time * 0.002) * 0.1;
+        moonGlow.material.opacity = 0.3 + Math.sin(time * 0.002) * 0.1;
     }
     
     // Animate floating petals
