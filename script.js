@@ -87,7 +87,7 @@ const sky = new THREE.Mesh(skyGeo, skyMat);
 scene.add(sky);
 
 // ===== LIGHTING =====
-const ambient = new THREE.AmbientLight(0x2a3a5a, 0.4);
+const ambient = new THREE.AmbientLight(0x2a3a5a, 1);
 scene.add(ambient);
 
 // Moonlight as key light
@@ -461,7 +461,7 @@ function animate() {
     
     // Pulsing moon glow
     if (moonGlow) {
-        moonGlow.material.opacity = 0.3 + Math.sin(time * 0.002) * 0.1;
+        moonGlow.material.opacity = 0.8 + Math.sin(time * 0.002) * 0.1;
     }
     
     // Animate floating petals
