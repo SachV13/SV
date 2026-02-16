@@ -5,13 +5,15 @@
 }
 
 :root {
-    --pink: #ff6b9d;
-    --purple: #9d7fb5;
-    --sky-blue: #6ba3d4;
-    --lavender: #c8b5d6;
+    --deep-navy: #0a1428;
+    --space-blue: #1a2a3f;
+    --vibrant-orange: #ff8844;
+    --vibrant-pink: #ff3388;
+    --vibrant-purple: #aa44ff;
+    --cosmic-teal: #44ddff;
     --white: #ffffff;
-    --soft-white: #f8f5f9;
-    --text-dim: #d4c5e0;
+    --soft-white: #e8f0ff;
+    --text-dim: #a8c0e0;
 }
 
 html, body {
@@ -27,7 +29,7 @@ html, body {
 #loading-screen {
     position: fixed;
     inset: 0;
-    background: linear-gradient(180deg, #ff9dc1 0%, #b89dd6 50%, #6ba3d4 100%);
+    background: linear-gradient(180deg, #0a1428 0%, #1a2a3f 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,14 +109,14 @@ html, body {
     position: fixed;
     top: 80px;
     right: 20px;
-    background: rgba(255, 107, 157, 0.15);
+    background: rgba(26, 42, 63, 0.6);
     backdrop-filter: blur(10px);
     padding: 8px 16px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(68, 221, 255, 0.3);
     font-size: 11px;
     font-weight: 600;
-    color: var(--white);
+    color: var(--cosmic-teal);
     z-index: 1000;
     font-family: 'Inter', monospace;
 }
@@ -130,7 +132,7 @@ html, body {
     justify-content: space-between;
     align-items: center;
     padding: 32px 64px;
-    background: linear-gradient(180deg, rgba(255, 107, 157, 0.2) 0%, rgba(255, 107, 157, 0) 100%);
+    background: linear-gradient(180deg, rgba(10, 20, 40, 0.8) 0%, rgba(10, 20, 40, 0) 100%);
     backdrop-filter: blur(5px);
 }
 
@@ -139,7 +141,7 @@ html, body {
     font-size: 28px;
     font-weight: 600;
     letter-spacing: 1px;
-    background: linear-gradient(135deg, var(--white), var(--lavender));
+    background: linear-gradient(135deg, var(--cosmic-teal), var(--white));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -168,7 +170,7 @@ html, body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--pink);
+    background: var(--cosmic-teal);
     transition: width 0.3s ease;
 }
 
@@ -177,7 +179,7 @@ html, body {
 }
 
 .nav-links a:hover {
-    color: var(--pink);
+    color: var(--cosmic-teal);
 }
 
 /* ===== PROGRESS BAR ===== */
@@ -187,10 +189,10 @@ html, body {
     left: 0;
     height: 3px;
     width: 0;
-    background: linear-gradient(90deg, var(--pink), var(--purple), var(--sky-blue));
+    background: linear-gradient(90deg, var(--cosmic-teal), var(--vibrant-purple), var(--vibrant-pink));
     z-index: 101;
     transition: width 0.5s ease;
-    box-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
+    box-shadow: 0 0 20px rgba(68, 221, 255, 0.6);
 }
 
 /* ===== SECTIONS ===== */
@@ -230,11 +232,11 @@ html, body {
 .label {
     font-size: 14px;
     font-weight: 500;
-    color: var(--lavender);
+    color: var(--cosmic-teal);
     margin-bottom: 20px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 10px rgba(68, 221, 255, 0.5);
 }
 
 .title {
@@ -244,7 +246,7 @@ html, body {
     line-height: 1.1;
     letter-spacing: -1px;
     margin-bottom: 28px;
-    background: linear-gradient(135deg, var(--white) 0%, var(--lavender) 100%);
+    background: linear-gradient(135deg, var(--white) 0%, var(--cosmic-teal) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -277,7 +279,7 @@ html, body {
     letter-spacing: -1px;
     margin-bottom: 60px;
     text-align: center;
-    background: linear-gradient(135deg, var(--white), var(--pink));
+    background: linear-gradient(135deg, var(--white), var(--cosmic-teal));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -316,21 +318,22 @@ html, body {
 
 .tags span {
     padding: 8px 16px;
-    background: rgba(255, 107, 157, 0.15);
+    background: rgba(68, 221, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(68, 221, 255, 0.3);
     border-radius: 25px;
     font-size: 12px;
     font-weight: 500;
-    color: var(--white);
+    color: var(--cosmic-teal);
     transition: all 0.3s ease;
 }
 
 .tags span:hover {
-    background: var(--pink);
-    border-color: var(--pink);
+    background: var(--cosmic-teal);
+    border-color: var(--cosmic-teal);
+    color: var(--deep-navy);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 5px 15px rgba(68, 221, 255, 0.4);
 }
 
 /* ===== WORK SECTION ===== */
@@ -348,9 +351,9 @@ html, body {
 .work-box {
     position: absolute;
     padding: 36px;
-    background: rgba(157, 127, 181, 0.15);
+    background: rgba(26, 42, 63, 0.4);
     backdrop-filter: blur(15px);
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(68, 221, 255, 0.3);
     border-radius: 24px;
     cursor: pointer;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -360,9 +363,9 @@ html, body {
 
 .work-box:hover {
     transform: scale(1.08) translateY(-10px);
-    background: rgba(255, 107, 157, 0.25);
-    border-color: var(--pink);
-    box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
+    background: rgba(68, 221, 255, 0.15);
+    border-color: var(--cosmic-teal);
+    box-shadow: 0 20px 60px rgba(68, 221, 255, 0.4);
 }
 
 .work-box h3 {
@@ -371,7 +374,7 @@ html, body {
     font-weight: 700;
     letter-spacing: -0.5px;
     margin-bottom: 10px;
-    background: linear-gradient(135deg, var(--white), var(--lavender));
+    background: linear-gradient(135deg, var(--white), var(--cosmic-teal));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -436,7 +439,7 @@ html, body {
     font-weight: 700;
     letter-spacing: -1px;
     margin-bottom: 28px;
-    background: linear-gradient(135deg, var(--white), var(--pink));
+    background: linear-gradient(135deg, var(--white), var(--cosmic-teal));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -459,9 +462,9 @@ html, body {
 
 .contact-links a {
     padding: 14px 32px;
-    background: rgba(255, 107, 157, 0.2);
+    background: rgba(68, 221, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    border: 2px solid rgba(68, 221, 255, 0.3);
     border-radius: 30px;
     color: var(--white);
     text-decoration: none;
@@ -471,10 +474,11 @@ html, body {
 }
 
 .contact-links a:hover {
-    background: var(--pink);
-    border-color: var(--pink);
+    background: var(--cosmic-teal);
+    border-color: var(--cosmic-teal);
+    color: var(--deep-navy);
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+    box-shadow: 0 10px 30px rgba(68, 221, 255, 0.4);
 }
 
 /* ===== SCROLL INDICATOR ===== */
@@ -485,7 +489,7 @@ html, body {
     display: flex;
     align-items: center;
     gap: 16px;
-    color: var(--lavender);
+    color: var(--cosmic-teal);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 3px;
@@ -494,7 +498,7 @@ html, body {
 .scroll-indicator .line {
     width: 1px;
     height: 60px;
-    background: linear-gradient(to bottom, var(--pink), transparent);
+    background: linear-gradient(to bottom, var(--cosmic-teal), transparent);
     animation: scrollPulse 2.5s ease-in-out infinite;
 }
 
@@ -507,7 +511,7 @@ html, body {
 .mobile-view {
     position: fixed;
     inset: 0;
-    background: linear-gradient(180deg, #ff9dc1 0%, #b89dd6 50%, #6ba3d4 100%);
+    background: linear-gradient(180deg, #0a1428 0%, #1a2a3f 100%);
     display: none;
     flex-direction: column;
     align-items: center;

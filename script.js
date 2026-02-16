@@ -49,15 +49,15 @@ function updateFPS() {
     }
 }
 
-// ===== SKY - DREAMY GRADIENT =====
-scene.background = new THREE.Color(0x6ba3d4);
+// ===== SKY - DARK STARRY NIGHT =====
+scene.background = new THREE.Color(0x0a1428);
 
 const skyGeo = new THREE.SphereGeometry(500, 32, 32);
 const skyMat = new THREE.ShaderMaterial({
     uniforms: {
-        topColor: { value: new THREE.Color(0x6ba3d4) },      // Sky blue
-        middleColor: { value: new THREE.Color(0xb89dd6) },   // Purple
-        bottomColor: { value: new THREE.Color(0xff9dc1) }    // Pink
+        topColor: { value: new THREE.Color(0x0a1428) },      // Deep navy
+        middleColor: { value: new THREE.Color(0x1a2a3f) },   // Space blue
+        bottomColor: { value: new THREE.Color(0x0f1f35) }    // Dark blue
     },
     vertexShader: `
         varying float vY;
@@ -73,10 +73,10 @@ const skyMat = new THREE.ShaderMaterial({
         varying float vY;
         void main() {
             vec3 color;
-            if (vY > 0.3) {
-                color = mix(middleColor, topColor, (vY - 0.3) / 0.7);
+            if (vY > 0.2) {
+                color = mix(middleColor, topColor, (vY - 0.2) / 0.8);
             } else {
-                color = mix(bottomColor, middleColor, (vY + 1.0) / 1.3);
+                color = mix(bottomColor, middleColor, (vY + 1.0) / 1.2);
             }
             gl_FragColor = vec4(color, 1.0);
         }
@@ -87,27 +87,27 @@ const sky = new THREE.Mesh(skyGeo, skyMat);
 scene.add(sky);
 
 // ===== LIGHTING =====
-const ambient = new THREE.AmbientLight(0xffd4e5, 0.8);
+const ambient = new THREE.AmbientLight(0x2a3a5a, 0.4);
 scene.add(ambient);
 
-// Soft key light (twilight sun)
-const keyLight = new THREE.DirectionalLight(0xffb3d9, 1.2);
-keyLight.position.set(-30, 40, 20);
-keyLight.castShadow = true;
-keyLight.shadow.mapSize.width = 2048;
-keyLight.shadow.mapSize.height = 2048;
-keyLight.shadow.camera.far = 100;
-scene.add(keyLight);
-
-// Moonlight rim
-const moonLight = new THREE.DirectionalLight(0xb3d4ff, 0.6);
+// Moonlight as key light
+const moonLight = new THREE.DirectionalLight(0xb3d9ff, 1.8);
 moonLight.position.set(40, 50, -30);
+moonLight.castShadow = true;
+moonLight.shadow.mapSize.width = 2048;
+moonLight.shadow.mapSize.height = 2048;
+moonLight.shadow.camera.far = 120;
 scene.add(moonLight);
 
-// Fill light
-const fillLight = new THREE.PointLight(0xffc4e1, 0.8, 50);
-fillLight.position.set(0, 10, 15);
+// Warm fill light from flowers
+const fillLight = new THREE.PointLight(0xff88dd, 0.6, 60);
+fillLight.position.set(0, 5, 10);
 scene.add(fillLight);
+
+// Blue rim light
+const rimLight = new THREE.DirectionalLight(0x44ddff, 0.5);
+rimLight.position.set(-30, 30, 20);
+scene.add(rimLight);
 
 // ===== CRESCENT MOON =====
 const moonGroup = new THREE.Group();
@@ -150,23 +150,23 @@ scene.add(moonGroup);
 // ===== ROLLING HILL TERRAIN =====
 const groundGeo = new THREE.PlaneGeometry(200, 200, 150, 150);
 
-// Create flower texture
+// Create vibrant flower texture
 const flowerCanvas = document.createElement('canvas');
 flowerCanvas.width = 1024;
 flowerCanvas.height = 1024;
 const ctx = flowerCanvas.getContext('2d');
 
-// Base grass color
-ctx.fillStyle = '#4a6b3a';
+// Darker base grass color for night
+ctx.fillStyle = '#1a2d1f';
 ctx.fillRect(0, 0, 1024, 1024);
 
-// Draw grass texture
+// Draw darker grass texture
 for (let i = 0; i < 8000; i++) {
     const x = Math.random() * 1024;
     const y = Math.random() * 1024;
     const len = Math.random() * 3 + 1;
-    const greenVal = 40 + Math.random() * 30;
-    ctx.strokeStyle = `rgba(${greenVal * 0.7}, ${greenVal}, ${greenVal * 0.8}, ${0.4 + Math.random() * 0.4})`;
+    const greenVal = 25 + Math.random() * 20;
+    ctx.strokeStyle = `rgba(${greenVal * 0.6}, ${greenVal}, ${greenVal * 0.7}, ${0.3 + Math.random() * 0.3})`;
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -174,20 +174,40 @@ for (let i = 0; i < 8000; i++) {
     ctx.stroke();
 }
 
-// Draw pink flowers
-for (let i = 0; i < 3000; i++) {
+// Draw VIBRANT varied flowers - oranges, pinks, purples, yellows, whites
+const flowerColors = [
+    { r: 255, g: 136, b: 68 },   // Vibrant orange
+    { r: 255, g: 51, b: 136 },   // Hot pink
+    { r: 255, g: 102, b: 204 },  // Pink
+    { r: 170, g: 68, b: 255 },   // Purple
+    { r: 204, g: 68, b: 255 },   // Light purple
+    { r: 255, g: 204, b: 102 },  // Yellow-orange
+    { r: 255, g: 255, b: 255 },  // White
+    { r: 255, g: 238, b: 136 }   // Soft yellow
+];
+
+for (let i = 0; i < 4500; i++) {
     const x = Math.random() * 1024;
     const y = Math.random() * 1024;
-    const size = Math.random() * 4 + 2;
+    const size = Math.random() * 5 + 2;
     
-    // Pink flowers
-    ctx.fillStyle = Math.random() > 0.5 ? 
-        `rgba(255, ${120 + Math.random() * 100}, ${180 + Math.random() * 60}, 0.8)` :
-        `rgba(255, 255, 255, 0.7)`;  // White flowers
+    // Pick random vibrant color
+    const color = flowerColors[Math.floor(Math.random() * flowerColors.length)];
+    const brightness = 0.7 + Math.random() * 0.3;
+    
+    ctx.fillStyle = `rgba(${color.r * brightness}, ${color.g * brightness}, ${color.b * brightness}, 0.9)`;
     
     ctx.beginPath();
     ctx.arc(x, y, size, 0, Math.PI * 2);
     ctx.fill();
+    
+    // Add glow for some flowers
+    if (Math.random() > 0.7) {
+        ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.3)`;
+        ctx.beginPath();
+        ctx.arc(x, y, size * 1.5, 0, Math.PI * 2);
+        ctx.fill();
+    }
 }
 
 const flowerTexture = new THREE.CanvasTexture(flowerCanvas);
@@ -199,7 +219,7 @@ const groundMat = new THREE.MeshStandardMaterial({
     map: flowerTexture,
     roughness: 0.85,
     metalness: 0,
-    color: 0x5a7b4a
+    color: 0x2a3d2a
 });
 
 const ground = new THREE.Mesh(groundGeo, groundMat);
@@ -230,37 +250,37 @@ const starsGeo = new THREE.BufferGeometry();
 const starVerts = [];
 const starSizes = [];
 
-for (let i = 0; i < 4000; i++) {
+for (let i = 0; i < 6000; i++) {
     starVerts.push(
-        (Math.random() - 0.5) * 800,
-        Math.random() * 400 + 50,
-        (Math.random() - 0.5) * 800
+        (Math.random() - 0.5) * 900,
+        Math.random() * 450 + 50,
+        (Math.random() - 0.5) * 900
     );
-    starSizes.push(Math.random() * 2 + 0.5);
+    starSizes.push(Math.random() * 2.5 + 0.5);
 }
 
 starsGeo.setAttribute('position', new THREE.Float32BufferAttribute(starVerts, 3));
 starsGeo.setAttribute('size', new THREE.Float32BufferAttribute(starSizes, 1));
 
-// Star texture
+// Brighter star texture for night sky
 const starCanvas = document.createElement('canvas');
 starCanvas.width = 32;
 starCanvas.height = 32;
 const starCtx = starCanvas.getContext('2d');
 const starGrad = starCtx.createRadialGradient(16, 16, 0, 16, 16, 16);
 starGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
-starGrad.addColorStop(0.3, 'rgba(255, 245, 230, 0.8)');
-starGrad.addColorStop(1, 'rgba(255, 220, 200, 0)');
+starGrad.addColorStop(0.2, 'rgba(230, 240, 255, 0.9)');
+starGrad.addColorStop(1, 'rgba(200, 220, 255, 0)');
 starCtx.fillStyle = starGrad;
 starCtx.fillRect(0, 0, 32, 32);
 
 const stars = new THREE.Points(
     starsGeo,
     new THREE.PointsMaterial({
-        size: 2.5,
+        size: 3,
         map: new THREE.CanvasTexture(starCanvas),
         transparent: true,
-        opacity: 0.8,
+        opacity: 0.9,
         blending: THREE.AdditiveBlending,
         sizeAttenuation: true
     })
@@ -308,7 +328,7 @@ const petals = new THREE.Points(
 scene.add(petals);
 
 // ===== FOG =====
-scene.fog = new THREE.FogExp2(0x9d7fb5, 0.008);
+scene.fog = new THREE.FogExp2(0x0a1428, 0.01);
 
 // ===== CAMERA POSITIONS =====
 camera.position.set(0, 2, 18);
@@ -321,12 +341,10 @@ const cameraPositions = [
     { pos: { x: 2, y: 0, z: 10 }, look: { x: 0, y: 1, z: 0 } }       // Contact - personal
 ];
 
-// ===== CHARACTER MODEL (OPTIONAL) =====
+// ===== CHARACTER MODEL =====
 let avatar = null;
 let mixer = null;
 
-// If you have a character model, uncomment this:
-/*
 const loader = new THREE.GLTFLoader();
 loader.load(
     'sachmodel.glb',
@@ -351,16 +369,17 @@ loader.load(
         
         scene.add(avatar);
         console.log('✅ Character loaded');
+        
+        // Hide loading screen after model loads
+        document.getElementById('loading-screen').classList.add('hidden');
     },
     (xhr) => console.log(`⏳ Loading: ${(xhr.loaded / xhr.total * 100).toFixed(0)}%`),
-    (err) => console.error('❌ Failed to load character:', err)
+    (err) => {
+        console.error('❌ Failed to load character:', err);
+        // Hide loading screen even if model fails
+        document.getElementById('loading-screen').classList.add('hidden');
+    }
 );
-*/
-
-// Hide loading screen after a short delay
-setTimeout(() => {
-    document.getElementById('loading-screen').classList.add('hidden');
-}, 1500);
 
 // ===== SECTION NAVIGATION =====
 let currentSection = 0;
@@ -476,4 +495,4 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-console.log('🌸 Flower Hill Portfolio Loaded');
+console.log('🌌 Cosmic Flower Portfolio Loaded');
