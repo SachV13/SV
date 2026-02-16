@@ -329,7 +329,7 @@ let mixer = null;
 /*
 const loader = new THREE.GLTFLoader();
 loader.load(
-    'your-character-model.glb',
+    'sachmodel.glb',
     (gltf) => {
         avatar = gltf.scene;
         avatar.scale.set(2, 2, 2);
