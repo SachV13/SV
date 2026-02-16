@@ -335,7 +335,7 @@ camera.position.set(0, 2, 18);
 camera.lookAt(0, 0, 0);
 
 const cameraPositions = [
-    { pos: { x: 0, y: -3, z: 5 }, look: { x: 0, y: 0, z: 0 } },      // Home - wide view
+    { pos: { x: 0, y: -3, z: -10 }, look: { x: 0, y: 0, z: 0 } },      // Home - wide view
     { pos: { x: -3, y: 1, z: 4 }, look: { x: 0, y: 1, z: 0 } },      // About - closer
     { pos: { x: 0, y: 8, z: 22 }, look: { x: 0, y: 0, z: 0 } },      // Work - elevated
     { pos: { x: 2, y: 0, z: 10 }, look: { x: 0, y: 1, z: 0 } }       // Contact - personal
